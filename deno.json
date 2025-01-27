@@ -1,0 +1,18 @@
+{
+  "imports": {
+    "lume/": "https://deno.land/x/lume@v2.5.0/"
+  },
+  "tasks": {
+    "dev": "deno task lume -s",
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
+    "build": "deno task lume"
+  },
+  "compilerOptions": {
+    "types": [
+      "lume/types.ts"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "npm:react",
+    "jsxImportSourceTypes": "npm:@types/react"
+  }
+}
