@@ -1,4 +1,5 @@
 import vento from "lume/plugins/vento.ts";
+import nav from "lume/plugins/nav.ts";
 import jsx from "lume/plugins/jsx.ts";
 import tailwindcss from "lume/plugins/tailwindcss.ts";
 import postcss from "lume/plugins/postcss.ts";
@@ -9,8 +10,10 @@ const site = lume({ src: "src" });
 
 /** Override vento default extensions because the Vento plugin is not that great */
 site.use(vento({ extensions: [".html"], options: {} }));
+site.use(nav());
 site.use(jsx());
 site.use(tailwindcss({
+  extensions: [".html", ".tsx"],
   options: {
     theme: {
       fontFamily: {
