@@ -17,6 +17,17 @@ site.use(tailwindcss({
         "sans": ["Inter", "sans-serif"],
         "serif": ["Bodoni Moda", "serif"],
       },
+      extend: {
+        animation: {
+          "scroll-left": "scroll-left 100s linear infinite",
+        },
+        keyframes: {
+          "scroll-left": {
+            from: { transform: "translateX(0)" },
+            to: { transform: "translateX(-100%)" },
+          },
+        },
+      },
     },
   },
 }));
@@ -26,5 +37,8 @@ site.use(googleFonts({
   fonts:
     "https://fonts.google.com/share?selection.family=Bodoni+Moda:opsz,wght@6..96,688;6..96,800|Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900",
 }));
+
+/// Static assets
+site.copy("images");
 
 export default site;

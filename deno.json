@@ -3,8 +3,8 @@
     "lume/": "https://deno.land/x/lume@v2.5.0/"
   },
   "tasks": {
-    "dev": "deno task lume -s",
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
+    "dev": "deno task lume -s",
     "build": "deno task lume"
   },
   "compilerOptions": {
