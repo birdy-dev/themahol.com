@@ -1,6 +1,7 @@
 export const layout = "layouts/site.html";
 export const title = "Mahol Arts & Events";
 export const navTitle = "Home";
+export const description = "Mahol is an Edmonton arts and events team that serves local artists and enables them to maximize their talent in the performance arts.";
 
 export default ({ comp }: Lume.Data) => (
   <>

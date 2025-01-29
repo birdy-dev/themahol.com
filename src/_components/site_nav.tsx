@@ -14,7 +14,12 @@ export default ({ item, url }: { item: Nav; url: string }) => (
     <nav className="relative">
       <div className="flex justify-between items-center py-4 px-6 md:px-16 w-full max-w-screen-xl mx-auto">
         <a href="/">
-          <img className="h-12" src="/images/site-logo.svg" alt="Mahol" />
+          <img
+            className="h-12"
+            src="/images/site-logo.svg"
+            alt="Mahol"
+            height="48"
+          />
         </a>
         <ul className="hidden md:flex gap-4">
           <MenuItem item={item} url={url} />
@@ -38,7 +43,12 @@ export default ({ item, url }: { item: Nav; url: string }) => (
       >
         <div className="w-full flex justify-between py-4 px-6">
           <a href="/">
-            <img className="h-12" src="/images/site-logo.svg" alt="Mahol" />
+            <img
+              className="h-12"
+              src="/images/site-logo.svg"
+              alt="Mahol"
+              height="48px"
+            />
           </a>
           <button type="button" id="mobile-menu-close">
             Close

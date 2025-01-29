@@ -2,14 +2,15 @@
 
 Static site built with Deno and Lume.
 
+## Cloudflare Deployment
+
+```
+curl -fsSL https://deno.land/x/install/install.sh | sh && /opt/buildhome/.deno/bin/deno task build
+```
+
 # TODO
 
-- footer (Phone + Email)
-  - social links (Instagram, Youtube)
-- image optimization
-- SEO metatags
-- deploy
-- favicon
+
 - color fixing
 - typography
 
@@ -21,3 +22,6 @@ Static site built with Deno and Lume.
 - desktop navbar
 - mobile navbar
 - about page
+- footer (Phone, Email, socials)
+- image optimization
+- SEO metatags

@@ -6,6 +6,8 @@ import postcss from "lume/plugins/postcss.ts";
 import googleFonts from "lume/plugins/google_fonts.ts";
 import icons from "lume/plugins/icons.ts";
 import inline from "lume/plugins/inline.ts";
+import picture from "lume/plugins/picture.ts";
+import transformImages from "lume/plugins/transform_images.ts";
 import lume from "lume/mod.ts";
 
 const site = lume({ src: "src" });
@@ -45,7 +47,9 @@ site.use(googleFonts({
 site.use(icons());
 site.use(inline());
 
-/// Static assets
-site.copy("images");
+/// images
+site.loadAssets([".jpg", ".svg"]);
+site.use(picture(/* Options */));
+site.use(transformImages({}));
 
 export default site;
