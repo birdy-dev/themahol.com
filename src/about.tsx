@@ -2,10 +2,13 @@ export const layout = "layouts/site.html";
 export const navTitle = "About";
 
 export default () => (
-  <div className="w-full">
-    <h1 className="uppercase text-center">About</h1>
-    <section className="space-y-8 w-full px-4 md:px-0 mx-auto max-w-screen-md">
-      <p>
+  <div className="w-full py-16">
+    <h1 className="font-serif uppercase text-center text-7xl font-semibold my-12">
+      About
+    </h1>
+
+    <section className="space-y-8 w-full px-4 md:px-0 mx-auto max-w-screen-sm py-12">
+      <p className="leading-7">
         Mahol (i.e. The Vibe) was founded by Sweta Maru and Amit Vaghela as they
         noticed there was no common platform for various artists and vendors
         across Canada for event opportunities. Mahol's mission is to bring your
@@ -15,7 +18,7 @@ export default () => (
         to spread happiness, which is derived from Mahol's definition.
       </p>
 
-      <p>
+      <p className="leading-7">
         We at Mahol will work tirelessly behind the scenes taking care of your
         every need, big or small (and maybe make your relatives jealous… JK) to
         ensure you have the best day(s) of your life. Our team specializes in
@@ -25,7 +28,7 @@ export default () => (
         helping you create your story now!
       </p>
 
-      <p>
+      <p className="leading-7">
         We are currently based out of Edmonton, Alberta, Canada and are steadily
         building connections across Canada, The United States and India.
       </p>

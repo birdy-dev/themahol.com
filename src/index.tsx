@@ -6,7 +6,7 @@ export default ({ comp }: Lume.Data) => (
   <>
     <div className="relative w-full h-[560px] md:h-[800px]">
       <div className="flex justify-center items-center size-full">
-        <div className="text-center text-white z-10 p-8 rounded-xl backdrop-blur-sm bg-black/20 shadow shadow-red-700/30 select-none">
+        <div className="text-center z-10 p-8 rounded-xl backdrop-blur-sm bg-black/20 shadow shadow-red-700/30 select-none">
           <h1 className="text-7xl md:text-[8rem] uppercase font-serif">
             Mahol
           </h1>

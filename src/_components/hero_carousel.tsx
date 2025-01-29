@@ -8,7 +8,7 @@ export default () => {
   );
 
   return (
-    <div className="absolute grid grid-rows-2 grid-flow-row-dense w-full h-full gap-4 p-4 overflow-clip bg-black">
+    <div className="absolute grid grid-rows-2 grid-flow-row-dense w-full h-full gap-4 p-4 overflow-clip">
       <div className="flex gap-4 w-fit">
         <ScrollChunk imgs={imgs} start={0} end={count / 2} />
         <ScrollChunk imgs={imgs} start={0} end={count / 2} isDuplicate />

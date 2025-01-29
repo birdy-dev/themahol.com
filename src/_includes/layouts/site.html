@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="/styles.css">
   </head>
 
-  <body>
-    {{ comp.site_nav({ item: nav.menu(), url: url })}}
-    <main>
+  <body class="min-h-screen bg-black text-white/95">
+    <header class="bg-white/95 text-black">
+      {{ comp.site_nav({ item: nav.menu(), url: url })}}
+    </header>
+    <main class="h-full">
       {{ content }}
     </main>
   </body>

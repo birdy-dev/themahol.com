@@ -4,11 +4,11 @@ Static site built with Deno and Lume.
 
 # TODO
 
-- about page
 - footer (Phone + Email)
   - social links (Instagram, Youtube)
 - image optimization
-- upgrade to lume v3, tailwind v4
+- SEO metatags
+- color fixing
 
 ## DONE
 
@@ -17,3 +17,5 @@ Static site built with Deno and Lume.
 - make carousel
 - desktop  navbar
 - mobile navbar
+- about page
+
