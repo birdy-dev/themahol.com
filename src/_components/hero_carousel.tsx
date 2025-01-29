@@ -41,6 +41,8 @@ function ScrollChunk(
             src={src}
             draggable={false}
             alt=""
+            width="500"
+            height="600"
             transform-images="avif webp 500"
           />
         </div>

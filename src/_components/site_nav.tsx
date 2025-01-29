@@ -18,6 +18,7 @@ export default ({ item, url }: { item: Nav; url: string }) => (
             className="h-12"
             src="/images/site-logo.svg"
             alt="Mahol"
+            width="40"
             height="48"
           />
         </a>
@@ -47,7 +48,8 @@ export default ({ item, url }: { item: Nav; url: string }) => (
               className="h-12"
               src="/images/site-logo.svg"
               alt="Mahol"
-              height="48px"
+              width="40"
+              height="48"
             />
           </a>
           <button type="button" id="mobile-menu-close">

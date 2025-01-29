@@ -49,7 +49,7 @@ site.use(inline());
 
 /// images
 site.loadAssets([".jpg", ".svg"]);
-site.use(picture(/* Options */));
-site.use(transformImages({}));
+site.use(picture());
+site.use(transformImages());
 
 export default site;
