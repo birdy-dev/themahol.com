@@ -8,14 +8,16 @@ Static site built with Deno and Lume.
   - social links (Instagram, Youtube)
 - image optimization
 - SEO metatags
+- deploy
+- favicon
 - color fixing
+- typography
 
 ## DONE
 
 - get logo
 - get photo assets
 - make carousel
-- desktop  navbar
+- desktop navbar
 - mobile navbar
 - about page
-

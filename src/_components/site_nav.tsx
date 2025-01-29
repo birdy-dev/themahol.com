@@ -32,7 +32,7 @@ export default ({ item, url }: { item: Nav; url: string }) => (
       </div>
 
       <div
-      className="absolute left-0 top-0 z-50 w-full overflow-hidden bg-white transition-all ease-linear md:hidden"
+        className="absolute left-0 top-0 z-50 w-full overflow-hidden bg-white transition-all ease-linear md:hidden"
         style={{ height: 0 }}
         id="mobile-menu"
       >
