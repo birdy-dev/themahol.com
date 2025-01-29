@@ -1,65 +1,67 @@
 type Nav = {
-  slug: string;
   data: {
     url: string;
     basename: string;
     title?: string;
     navTitle?: string;
   };
+  slug?: string;
   children?: Nav[];
 };
 
 export default ({ item, url }: { item: Nav; url: string }) => (
   <div className="w-full">
-    <nav className="flex justify-between items-center py-4 px-6 md:px-16 w-full max-w-screen-xl mx-auto">
-      <a href="/">
-        <img className="h-12" src="/images/site-logo.svg" alt="Mahol" />
-      </a>
-      <ul className="hidden md:flex gap-4">
-        <MenuItem item={item} url={url} />
-        <li>
-          <a
-            className="px-5 py-3 rounded-lg hover:bg-gray-100 transition ease-in"
-            href="/"
-          >
-            Events
-          </a>
-        </li>
-      </ul>
+    <nav className="relative">
+      <div className="flex justify-between items-center py-4 px-6 md:px-16 w-full max-w-screen-xl mx-auto">
+        <a href="/">
+          <img className="h-12" src="/images/site-logo.svg" alt="Mahol" />
+        </a>
+        <ul className="hidden md:flex gap-4">
+          <MenuItem item={item} url={url} />
+        </ul>
 
-      <div className="flex flex-col md:hidden">
         <button
-          className="peer"
+          className="md:hidden"
           type="button"
-          id="mobile-menu-toggle"
           aria-controls="mobile-menu"
-          aria-expanded="false"
+          id="mobile-menu-open"
         >
           <span className="sr-only">Open main menu</span>
           <span>Menu</span>
         </button>
+      </div>
 
-        <ul
-          className="h-0 peer-aria-[expanded=false]:invisible"
-          id="mobile-menu"
-        >
+      <div
+      className="absolute left-0 top-0 z-50 w-full overflow-hidden bg-white transition-all ease-linear md:hidden"
+        style={{ height: 0 }}
+        id="mobile-menu"
+      >
+        <div className="w-full flex justify-between py-4 px-6">
+          <a href="/">
+            <img className="h-12" src="/images/site-logo.svg" alt="Mahol" />
+          </a>
+          <button type="button" id="mobile-menu-close">
+            Close
+          </button>
+        </div>
+        <ul className="flex flex-col h-full text-center gap-4">
           <MenuItem item={item} url={url} />
         </ul>
-
-        <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: We need this JS
-          dangerouslySetInnerHTML={{
-            __html: `
-            document
-              .getElementById("mobile-menu-toggle")
-              .addEventListener("click", function (e) {
-                const expanded = e.currentTarget.getAttribute('aria-expanded');
-                e.currentTarget.setAttribute('aria-expanded', expanded === 'true' ? 'false' : 'true');
-              })
-          `,
-          }}
-        />
       </div>
+
+      <script
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Used to toggle the menu
+        dangerouslySetInnerHTML={{
+          __html: `
+            document
+              .getElementById("mobile-menu-open")
+              .addEventListener("click", () => document.getElementById("mobile-menu").style.height = "100vh");
+            document
+              .getElementById("mobile-menu-close")
+              .addEventListener("click", () => document.getElementById("mobile-menu").style.height = "0");
+          `,
+        }}
+      />
     </nav>
   </div>
 );
@@ -70,7 +72,7 @@ const MenuItem = ({ item, url }: { item: Nav; url: string }) => {
     <li>
       {item.data.navTitle && !active && (
         <a
-          className="px-5 py-3 rounded-lg hover:bg-gray-100 transition ease-in"
+          className="block px-5 py-3 rounded-lg hover:bg-gray-100 transition ease-in"
           href={item.data.url}
           data-active={active}
         >
@@ -79,9 +81,9 @@ const MenuItem = ({ item, url }: { item: Nav; url: string }) => {
       )}
 
       {item.data.navTitle && active && (
-        <span className="px-5 py-3 rounded-lg bg-gray-100/70 cursor-default">
+        <div className="px-5 py-3 rounded-lg bg-gray-100/70 cursor-default">
           {item.data.navTitle}
-        </span>
+        </div>
       )}
 
       {item.children?.map((child) => (

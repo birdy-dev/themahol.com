@@ -1,9 +1,14 @@
+# Mahol Website
+
+Static site built with Deno and Lume.
+
 # TODO
 
-- mobile navbar
 - about page
 - footer (Phone + Email)
   - social links (Instagram, Youtube)
+- image optimization
+- upgrade to lume v3, tailwind v4
 
 ## DONE
 
@@ -11,3 +16,4 @@
 - get photo assets
 - make carousel
 - desktop  navbar
+- mobile navbar
