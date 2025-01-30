@@ -26,12 +26,12 @@ site.use(tailwindcss({
       },
       extend: {
         animation: {
-          "scroll-left": "scroll-left 100s linear infinite",
+          "marquee": "marquee 100s linear infinite",
         },
         keyframes: {
-          "scroll-left": {
-            from: { transform: "translateX(0)" },
-            to: { transform: "translateX(-100%)" },
+          "marquee": {
+            "0%": { transform: "translateX(0)" },
+            "100%": { transform: "translateX(-100%)" },
           },
         },
       },
