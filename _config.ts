@@ -20,11 +20,15 @@ site.use(tailwindcss({
   extensions: [".html", ".tsx", ".vto"],
   options: {
     theme: {
-      fontFamily: {
-        "sans": ["Inter", "sans-serif"],
-        "serif": ["Bodoni Moda", "serif"],
-      },
       extend: {
+        fontFamily: {
+          "sans": ["Inter", "sans-serif"],
+          "serif": ["Bodoni Moda", "serif"],
+        },
+        colors: {
+          "white": "#fdfdfd",
+          "black": "#090909"
+        },
         animation: {
           "marquee": "marquee 100s linear infinite",
         },

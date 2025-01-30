@@ -84,7 +84,7 @@ const MenuItem = ({ item, url }: { item: Nav; url: string }) => {
     <li>
       {item.data.navTitle && !active && (
         <a
-          className="block px-5 py-3 rounded-lg hover:bg-gray-100 transition ease-in"
+          className="block px-5 py-3 rounded-lg hover:bg-gray-200 transition ease-in"
           href={item.data.url}
           data-active={active}
         >
@@ -93,7 +93,7 @@ const MenuItem = ({ item, url }: { item: Nav; url: string }) => {
       )}
 
       {item.data.navTitle && active && (
-        <div className="px-5 py-3 rounded-lg bg-gray-100/70 cursor-default">
+        <div className="px-5 py-3 rounded-lg bg-gray-200 cursor-default">
           {item.data.navTitle}
         </div>
       )}
