@@ -9,7 +9,7 @@ type Nav = {
   children?: Nav[];
 };
 
-export default ({ item, url }: { item: Nav; url: string }) => (
+export default ({ item, url, comp }: { item: Nav; url: string } & Lume.Data) => (
   <div className="w-full">
     <nav className="relative">
       <div className="flex justify-between items-center py-4 px-6 md:px-16 w-full max-w-screen-xl mx-auto">
@@ -32,8 +32,8 @@ export default ({ item, url }: { item: Nav; url: string }) => (
           aria-controls="mobile-menu"
           id="mobile-menu-open"
         >
-          <span className="sr-only">Open main menu</span>
-          <span>Menu</span>
+          <span className="sr-only">Menu</span>
+          <comp.icons.menu />
         </button>
       </div>
 
@@ -53,7 +53,8 @@ export default ({ item, url }: { item: Nav; url: string }) => (
             />
           </a>
           <button type="button" id="mobile-menu-close">
-            Close
+            <span className="sr-only">Close</span> 
+            <comp.icons.x />
           </button>
         </div>
         <ul className="flex flex-col h-full text-center gap-4">
