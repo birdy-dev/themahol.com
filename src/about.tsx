@@ -3,7 +3,7 @@ export const navTitle = "About";
 
 export default () => (
   <div className="w-full py-16">
-    <h1 className="font-serif uppercase text-center text-7xl font-semibold my-12">
+    <h1 className="font-title uppercase text-center text-7xl font-semibold my-12">
       About
     </h1>
 

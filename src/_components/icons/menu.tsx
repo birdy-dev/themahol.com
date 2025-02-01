@@ -11,6 +11,7 @@ export default () => (
     stroke-linejoin="round"
     className="icon icon-tabler icons-tabler-outline icon-tabler-menu-4"
   >
+    <title>Menu</title>
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <path d="M7 6h10" />
     <path d="M4 12h16" />

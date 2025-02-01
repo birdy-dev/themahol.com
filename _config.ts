@@ -23,7 +23,7 @@ site.use(tailwindcss({
       extend: {
         fontFamily: {
           "sans": ["Inter", "sans-serif"],
-          "serif": ["Bodoni Moda", "serif"],
+          "title": ["Oswald", "sans-serif"],
         },
         colors: {
           "white": "#fdfdfd",
@@ -46,7 +46,7 @@ site.use(postcss());
 site.use(googleFonts({
   cssFile: "styles.css", // appends if already exists
   fonts:
-    "https://fonts.google.com/share?selection.family=Bodoni+Moda:opsz,wght@6..96,688;6..96,800|Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900",
+    "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&display=swap",
 }));
 site.use(icons());
 site.use(inline());

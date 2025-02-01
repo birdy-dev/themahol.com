@@ -7,11 +7,11 @@ export default ({ comp }: Lume.Data) => (
   <>
     <div className="relative w-full h-[560px] md:h-[800px]">
       <div className="flex justify-center items-center size-full">
-        <div className="text-center z-10 p-8 rounded-xl backdrop-blur-sm bg-black/20 shadow shadow-red-700/30 select-none">
-          <h1 className="text-7xl md:text-[8rem] uppercase font-serif">
+        <div className="text-center z-10 p-8 select-none">
+          <h1 className="text-7xl md:text-[8rem] font-bold uppercase font-title">
             Mahol
           </h1>
-          <p className="text-xl italic">Arts & Events</p>
+          <p className="text-2xl ">Arts & Events</p>
         </div>
       </div>
       <div className="absolute size-full left-0 top-0">
