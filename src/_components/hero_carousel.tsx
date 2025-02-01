@@ -37,12 +37,12 @@ function ScrollChunk(
           key={src}
         >
           <img
-            className="size-full object-cover object-center select-none"
+            className="h-full object-cover object-center select-none"
             src={src}
             draggable={false}
             width="400"
             height="400"
-            transform-images="avif webp 500"
+            transform-images="webp 600"
             alt=""
           />
         </div>
