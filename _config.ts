@@ -8,6 +8,7 @@ import icons from "lume/plugins/icons.ts";
 import inline from "lume/plugins/inline.ts";
 import picture from "lume/plugins/picture.ts";
 import transformImages from "lume/plugins/transform_images.ts";
+import metas from "lume/plugins/metas.ts";
 import lume from "lume/mod.ts";
 
 const site = lume({ src: "src" });
@@ -50,6 +51,7 @@ site.use(googleFonts({
 }));
 site.use(icons());
 site.use(inline());
+site.use(metas());
 
 /// images
 site.loadAssets([".jpg", ".svg"]);
