@@ -47,15 +47,6 @@ export default ({ comp }: Lume.Data) => (
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
         />
-
-        <iframe
-          width="315"
-          height="560"
-          src="https://www.youtube.com/embed/R4suYEnlerg"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
       </section>
     </div>
   </>
