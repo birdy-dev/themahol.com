@@ -4,7 +4,7 @@ const carouselImgs = [];
 export default () => {
   const count = 20; //todo make this dynamic
   const imgs = [...Array(count).keys()].map((i) =>
-    `images/hero_carousel/${i + 1}.jpg`
+    `/images/hero_carousel/${i + 1}.jpg`
   );
 
   return (
