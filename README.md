@@ -8,12 +8,6 @@ Static site built with Deno and Lume.
 curl -fsSL https://deno.land/x/install/install.sh | sh && /opt/buildhome/.deno/bin/deno task build
 ```
 
-# TODO
-
-
-- color fixing
-- typography
-
 ## DONE
 
 - get logo
