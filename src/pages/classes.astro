@@ -31,14 +31,6 @@ export const prerender = true;
             <source src="/videos/dance_class.mp4" type="video/mp4" />
             <a href="/videos/dance_class.mp4">Watch the Mahol dance class reel</a>
           </video>
-          <button
-            id="dance-reel-sound"
-            type="button"
-            aria-controls="dance-reel"
-            class="absolute bottom-4 right-4 min-h-11 rounded-full bg-black/75 px-4 py-2 text-sm font-medium text-white hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            Unmute
-          </button>
         </div>
         <div class="flex flex-col justify-center md:py-6">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-400">
@@ -227,17 +219,5 @@ export const prerender = true;
   </section>
   <script>
     import "../scripts/dance_passes.ts";
-
-    const reel = document.querySelector<HTMLVideoElement>("#dance-reel");
-    const soundButton = document.querySelector<HTMLButtonElement>("#dance-reel-sound");
-
-    if (reel && soundButton) {
-      soundButton.addEventListener("click", () => {
-        reel.muted = !reel.muted;
-      });
-      reel.addEventListener("volumechange", () => {
-        soundButton.textContent = reel.muted ? "Unmute" : "Mute";
-      });
-    }
   </script>
 </SiteLayout>
