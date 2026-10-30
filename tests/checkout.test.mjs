@@ -126,6 +126,40 @@ test("preview configuration rejects live keys before contacting Stripe", async (
   assert.equal(mock.mock.callCount(), 0);
 });
 
+test("production rejects test keys for checkout and confirmation before contacting Stripe", async (t) => {
+  const mock = t.mock.method(globalThis, "fetch", () => {
+    throw new Error("must not call");
+  });
+  for (const key of ["sk_test_example", "rk_test_example"]) {
+    const environment = {
+      STRIPE_MODE: "live",
+      STRIPE_SECRET_KEY: key,
+      STRIPE_PRICE_DROP_IN: "price_example",
+    };
+    await assert.rejects(
+      createCheckout(environment, "https://themahol.com", "drop-in", "beginner", "request-id"),
+      /live key/,
+    );
+    await assert.rejects(
+      stripeRequest(environment, "checkout/sessions/cs_test_example"),
+      /live key/,
+    );
+  }
+  assert.equal(mock.mock.callCount(), 0);
+});
+
+test("production permits live secret and restricted keys", async (t) => {
+  const mock = t.mock.method(globalThis, "fetch", async () => Response.json({ livemode: true }));
+  for (const key of ["sk_live_example", "rk_live_example"]) {
+    const result = await stripeRequest(
+      { STRIPE_MODE: "live", STRIPE_SECRET_KEY: key },
+      "prices/price_example",
+    );
+    assert.equal(result.livemode, true);
+  }
+  assert.equal(mock.mock.callCount(), 2);
+});
+
 test("Stripe failures include a request ID without exposing response contents", async (t) => {
   t.mock.method(globalThis, "fetch", async () =>
     Response.json(

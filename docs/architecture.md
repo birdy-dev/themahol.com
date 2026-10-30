@@ -11,7 +11,7 @@ flowchart TD
     CI -->|Wrangler + Cloudflare API token| Worker
     Browser[Visitor browser] --> Preview[Branch preview on workers.dev]
     Preview --> Worker[Cloudflare Worker: mahol-website]
-    Domain[themahol.com: production domain] -. Future production cutover .-> Worker
+    Domain[themahol.com: production domain] -->|Custom Domain applied on production deploy| Worker
     Worker --> Assets[Prebuilt Astro pages and static assets]
     Browser -->|POST /api/checkout/: pass + class| Worker
     Secrets[Cloudflare preview secret: Stripe test key] --> Worker
@@ -28,7 +28,7 @@ A drop-in uses a one-time payment; the other four passes create recurring subscr
 
 ## Deployment and domains
 
-The Worker is named `mahol-website`. The current [branch preview](https://codex-astro-preview-mahol-website.birdy.workers.dev/classes/) runs on `workers.dev`, Cloudflare's hosted domain. `themahol.com` is the intended production domain, but this migration has not switched its existing deployment to the Worker. That cutover needs production configuration and a Cloudflare custom domain or route; `site` in `astro.config.mjs` alone does not connect a domain.
+The Worker is named `mahol-website`. The current [branch preview](https://codex-astro-preview-mahol-website.birdy.workers.dev/classes/) runs on `workers.dev`, Cloudflare's hosted domain. `wrangler.jsonc` declares `themahol.com` as a production Custom Domain, applied when production is deployed. Before the first release, confirm the zone is active in the deployment account, configure the live Stripe secret, and remove any conflicting CNAME or old Pages domain association at cutover. No production deployment or DNS cutover has been performed by adding this configuration. See the [release instructions](../README.md#release-a-version).
 
 `pnpm deploy:preview` builds and publishes the current branch manually. GitHub
 Actions also provides **Deploy preview**, triggered only by **Run workflow** with
@@ -39,7 +39,7 @@ checks, builds, and deploys the tagged commit,
 and GitHub's `production` environment records the deployment status and history.
 Drafts, prereleases, tag pushes, and pushes to `main` do not deploy production.
 See the [release instructions](../README.md#release-a-version).
-Preview settings in `wrangler.jsonc` use test Price IDs and `STRIPE_MODE=test`, which rejects live keys. The test key lives in Cloudflare secrets, including the shared Preview Base for new previews. Existing previews need separate secret updates. `pnpm deploy:production` is also available to deploy production manually.
+Top-level `vars` in `wrangler.jsonc` define the five live Price IDs and `STRIPE_MODE=live` for production, which rejects test keys. Preview settings use test Price IDs and `STRIPE_MODE=test`, which rejects live keys. API keys stay in Cloudflare secrets, including the shared Preview Base test key for new previews. Existing previews need separate secret updates. Local `.env` uses `STRIPE_MODE=test`. `pnpm deploy:production` is also available to deploy production manually.
 
 ## Technology
 

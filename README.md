@@ -137,10 +137,14 @@ For deployment, configure `STRIPE_SECRET_KEY` as a Cloudflare Worker secret:
 pnpm exec wrangler secret put STRIPE_SECRET_KEY
 ```
 
-Set the five Price ID variables in the Worker's runtime Variables and Secrets
-settings.
+The five live Price IDs and `STRIPE_MODE=live` are committed under top-level `vars`
+in `wrangler.jsonc`. Test Price IDs and `STRIPE_MODE=test` are under `previews.vars`.
+Update Price IDs in that file rather than the dashboard so deployments preserve them.
 Use test credentials for previews and live credentials only for production.
 Runtime secrets belong in Cloudflare, not the repository or public client code.
+Production rejects test keys, and previews reject live keys. Local development
+must set `STRIPE_MODE=test` in `.env` along with its test key and test Price IDs;
+add this setting to existing `.env` files created before it was in `.env.example`.
 
 The dance page opens Stripe-hosted Checkout. Drop-ins use payment mode; the other
 four passes use subscriptions. The server validates the selected pass and class,
@@ -243,10 +247,22 @@ Cloudflare **Edit Cloudflare Workers** token scoped to that account. Organizatio
 settings must grant this repository access. Both workflows use these settings. See
 [Cloudflare's GitHub Actions guide](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/).
 The CI token authenticates deployment; Stripe secrets belong on the Worker and
-are not copied from local `.env`. Production Stripe Prices and its live key still
-need configuration before real payments can work. Deploying the Worker does not
-switch `themahol.com` from its old Deno deployment; that domain cutover remains a
-separate step. See workflow progress in the repository's **Actions** tab.
+are not copied from local `.env`. Production Price IDs are in `wrangler.jsonc`;
+the live `STRIPE_SECRET_KEY` must be configured on the production Worker before
+accepting payments. For the first deployment, `wrangler secret put` can create
+the Worker when prompted if it does not yet exist.
+
+`wrangler.jsonc` declares `themahol.com` as a Worker Custom Domain. Publishing
+`v1.0.0` deploys the Worker and applies that domain configuration, so no earlier
+release is needed to configure the domain. Before publishing, confirm that
+`themahol.com` is an active Cloudflare zone in the deployment account and that the
+CI token can manage its custom domain. If the hostname has an existing CNAME or
+is attached to the old Pages project, remove the conflicting association at
+cutover, then deploy. Cloudflare provisions the Custom Domain DNS record and TLS
+certificate. This configuration covers the apex domain only; `www.themahol.com`
+needs its own redirect or domain configuration. See
+[Cloudflare Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/)
+and workflow progress in the repository's **Actions** tab.
 
 ## Agent onboarding
 

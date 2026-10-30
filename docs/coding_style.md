@@ -16,6 +16,16 @@ and `pnpm-workspace.yaml`. Preserve established public URL routes such as
 its filename. Tool-managed/generated files retain required names. Documentation filenames also
 use lowercase and underscores.
 
+## Commits and pull requests
+
+Use semantic commits for commit messages and pull request titles. Write them as
+`type: description`, for example `feat: add dance pass checkout`. Use a short,
+imperative description and a type that matches the change, such as `feat`, `fix`,
+`docs`, `refactor`, `test`, or `chore`.
+
+Use the [pull request template](../.github/pull_request_template.md) to describe
+the problem, resulting behavior, and validation performed.
+
 ## Comments
 
 Do not add comments unless they are absolutely necessary. When one is required,

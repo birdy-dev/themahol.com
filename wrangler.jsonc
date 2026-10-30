@@ -8,6 +8,14 @@
     "binding": "ASSETS",
   },
   "observability": { "enabled": true },
+  "vars": {
+    "STRIPE_MODE": "live",
+    "STRIPE_PRICE_DROP_IN": "price_1UGBqdIuLhs6aDZvaoQdcu1V",
+    "STRIPE_PRICE_SINGLE_MONTH": "price_1UW56jIuLhs6aDZvMavxuzti",
+    "STRIPE_PRICE_SINGLE_THREE_MONTHS": "price_1UW56kIuLhs6aDZvV4U9G3kV",
+    "STRIPE_PRICE_BOTH_MONTH": "price_1UW56lIuLhs6aDZvYaUfmrFZ",
+    "STRIPE_PRICE_BOTH_THREE_MONTHS": "price_1UW56lIuLhs6aDZvLKLYSGVM",
+  },
   "previews": {
     "vars": {
       "STRIPE_MODE": "test",

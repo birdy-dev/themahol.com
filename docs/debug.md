@@ -62,5 +62,7 @@ Installation/check failures should reproduce with `pnpm install --frozen-lockfil
 and `pnpm check`. An authentication failure at deployment usually means the
 `CLOUDFLARE_API_TOKEN` Actions secret is missing/expired or its account access does
 not match the `CLOUDFLARE_ACCOUNT_ID` Actions variable. Local `wrangler login` does
-not authenticate GitHub Actions. A production deployment also does not update a
-branch Preview or move the `themahol.com` domain automatically.
+not authenticate GitHub Actions. Production deployment applies the `themahol.com`
+Custom Domain declared in `wrangler.jsonc`; domain setup failures can indicate an
+inactive zone, insufficient token permissions, or a conflicting existing CNAME
+or Pages domain association. A production deployment does not update a branch Preview.

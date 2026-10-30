@@ -53,6 +53,9 @@ export async function stripeRequest<T>(
   if (environment.STRIPE_MODE === "test" && !/^(sk|rk)_test_/.test(key)) {
     throw new Error("Preview checkout requires a Stripe test key.");
   }
+  if (environment.STRIPE_MODE === "live" && !/^(sk|rk)_live_/.test(key)) {
+    throw new Error("Production checkout requires a Stripe live key.");
+  }
   const response = await fetch(`https://api.stripe.com/v1/${path}`, {
     method: body ? "POST" : "GET",
     headers: {
