@@ -1,0 +1,47 @@
+{
+  "name": "mahol-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "check": "pnpm fmt:check && oxlint --deny-warnings --format=agent . && wrangler types worker_configuration.d.ts && astro check && node --test \"tests/*.test.mjs\"",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy:production": "pnpm check && pnpm build && wrangler deploy",
+    "deploy:preview": "pnpm build && wrangler preview",
+    "setup:env": "node scripts/setup_env.mjs",
+    "fmt": "oxfmt --write .",
+    "fmt:check": "oxfmt --check ."
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.0.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/oswald": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^6.0.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/compiler-rs": "^0.5.2",
+    "@stripe/cli": "^1.55.3",
+    "@types/node": "^26.6.6",
+    "oxfmt": "^0.75.0",
+    "oxlint": "^1.90.0",
+    "typescript": "^6.0.3",
+    "vite": "^7.3.7",
+    "wrangler": "^4.155.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.13.0",
+      "onFail": "download"
+    }
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "packageManager": "pnpm@12.4.1"
+}

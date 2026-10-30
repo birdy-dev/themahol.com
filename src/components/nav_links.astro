@@ -1,0 +1,24 @@
+---
+const menu = [
+  { title: "Home", href: "/" },
+  { title: "About Mahol", href: "/about/" },
+  { title: "Our Team", href: "/team/" },
+  { title: "Dance Classes", href: "/classes/" },
+];
+const currentPath = Astro.url.pathname;
+---
+
+{menu.map((item) => (
+  <li>
+    <a
+      href={item.href}
+      aria-current={currentPath === item.href ? "page" : undefined}
+      class:list={[
+        "block px-5 py-3 rounded-lg hover:bg-gray-200 transition ease-in focus-visible:outline-2 focus-visible:outline-offset-2",
+        { "bg-gray-200": currentPath === item.href },
+      ]}
+    >
+      {item.title}
+    </a>
+  </li>
+))}

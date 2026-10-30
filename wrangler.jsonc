@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mahol-website",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2026-10-29",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+  },
+  "observability": { "enabled": true },
+  "previews": {
+    "vars": {
+      "STRIPE_MODE": "test",
+      "STRIPE_PRICE_DROP_IN": "price_1UW5AwIuLhs6aDZvZp7LdKv0",
+      "STRIPE_PRICE_SINGLE_MONTH": "price_1UW5AwIuLhs6aDZv22XBS0vd",
+      "STRIPE_PRICE_SINGLE_THREE_MONTHS": "price_1UW5AxIuLhs6aDZve0OtO2nF",
+      "STRIPE_PRICE_BOTH_MONTH": "price_1UW5AyIuLhs6aDZvaLzTsPkl",
+      "STRIPE_PRICE_BOTH_THREE_MONTHS": "price_1UW5AyIuLhs6aDZv2TnyZtCY",
+    },
+  },
+}

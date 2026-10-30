@@ -1,0 +1,61 @@
+---
+import NavLinks from "./nav_links.astro";
+import Menu from "./icons/menu.astro";
+import Close from "./icons/close.astro";
+---
+
+<div class="w-full">
+  <nav class="relative" aria-label="Main navigation">
+    <div class="flex justify-between items-center py-4 px-6 md:px-16 w-full max-w-screen-xl mx-auto">
+      <a href="/" aria-label="Mahol home">
+        <img class="h-12" src="/images/site_logo.svg" alt="Mahol" width="40" height="48" />
+      </a>
+      <ul class="hidden md:flex gap-4">
+        <NavLinks />
+      </ul>
+      <button
+        class="md:hidden"
+        type="button"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        id="mobile-menu-open"
+      >
+        <span class="sr-only">Menu</span>
+        <Menu />
+      </button>
+    </div>
+    <div
+      class="absolute left-0 top-0 z-50 w-full h-dvh overflow-y-auto bg-white md:hidden"
+      hidden
+      id="mobile-menu"
+    >
+      <div class="w-full flex justify-between py-4 px-6">
+        <a href="/" aria-label="Mahol home">
+          <img class="h-12" src="/images/site_logo.svg" alt="Mahol" width="40" height="48" />
+        </a>
+        <button type="button" id="mobile-menu-close">
+          <span class="sr-only">Close menu</span>
+          <Close />
+        </button>
+      </div>
+      <ul class="flex flex-col text-center gap-4">
+        <NavLinks />
+      </ul>
+    </div>
+  </nav>
+</div>
+<script>
+  const openButton = document.querySelector<HTMLButtonElement>("#mobile-menu-open")!;
+  const closeButton = document.querySelector<HTMLButtonElement>("#mobile-menu-close")!;
+  const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu")!;
+  function setMenu(open: boolean) {
+    mobileMenu.hidden = !open;
+    openButton.setAttribute("aria-expanded", String(open));
+    (open ? closeButton : openButton).focus();
+  }
+  openButton.addEventListener("click", () => setMenu(true));
+  closeButton.addEventListener("click", () => setMenu(false));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !mobileMenu.hidden) setMenu(false);
+  });
+</script>

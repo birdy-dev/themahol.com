@@ -1,0 +1,75 @@
+---
+import { env } from "cloudflare:workers";
+import SiteLayout from "../../layouts/site_layout.astro";
+import {
+  stripeRequest,
+  classes,
+  type CheckoutSession,
+  type StripeEnvironment,
+} from "../../lib/checkout";
+import { passes } from "../../data/dance_passes";
+export const prerender = false;
+Astro.response.headers.set("Cache-Control", "no-store");
+Astro.response.headers.set("Referrer-Policy", "no-referrer");
+Astro.response.headers.set("X-Robots-Tag", "noindex");
+let paid = false;
+let passName = "";
+let className = "";
+const sessionId = Astro.url.searchParams.get("session_id");
+if (sessionId && /^cs_(test|live)_[A-Za-z0-9]+$/.test(sessionId)) {
+  try {
+    const session = await stripeRequest<CheckoutSession>(
+      env as unknown as StripeEnvironment,
+      `checkout/sessions/${encodeURIComponent(sessionId)}`,
+    );
+    const pass = session.metadata.mahol_pass;
+    const selectedClass = session.metadata.class;
+    paid =
+      session.status === "complete" &&
+      session.payment_status === "paid" &&
+      Object.hasOwn(passes, pass) &&
+      Object.hasOwn(classes, selectedClass);
+    if (paid) {
+      passName = passes[pass as keyof typeof passes].name;
+      className = classes[selectedClass as keyof typeof classes];
+    }
+  } catch (error) {
+    console.error(
+      "Payment confirmation failed:",
+      error instanceof Error ? error.message : "Unknown error",
+    );
+  }
+}
+---
+
+<SiteLayout title="Your Dance Pass | Mahol School of Arts">
+  <section class="mx-auto max-w-2xl px-5 py-16 sm:py-24">
+    <h1 class="font-title text-4xl font-semibold uppercase">
+      {paid ? "Your pass is ready" : "Payment not confirmed"}
+    </h1>
+    {paid ? (
+      <>
+        <p class="mt-6 leading-7 text-neutral-300">Your payment succeeded. Your pass starts now.</p>
+        <div class="mt-6 rounded-xl border border-neutral-800 p-5">
+          <p class="font-semibold">{passName}</p>
+          <p class="mt-2 text-neutral-300">{className}</p>
+        </div>
+      </>
+    ) : (
+      <p class="mt-6 leading-7 text-neutral-300">
+        We could not confirm a completed payment. If you just paid, refresh this page in a moment.
+        For help, email{" "}
+        <a class="underline" href="mailto:info@themahol.com">
+          info@themahol.com
+        </a>
+        .
+      </p>
+    )}
+    <a
+      class="mt-8 inline-flex rounded-xl bg-white px-6 py-3 font-semibold text-black"
+      href="/classes/"
+    >
+      Back to dance classes
+    </a>
+  </section>
+</SiteLayout>

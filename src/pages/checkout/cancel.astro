@@ -1,0 +1,20 @@
+---
+import SiteLayout from "../../layouts/site_layout.astro";
+export const prerender = true;
+---
+
+<SiteLayout title="Checkout Cancelled | Mahol School of Arts">
+  <section class="mx-auto max-w-2xl px-5 py-16 sm:py-24">
+    <h1 class="font-title text-4xl font-semibold uppercase">Checkout cancelled</h1>
+    <p class="mt-6 leading-7 text-neutral-300">
+      Your checkout was cancelled. You can return to the dance page and choose a pass whenever you
+      are ready.
+    </p>
+    <a
+      class="mt-8 inline-flex rounded-xl bg-white px-6 py-3 font-semibold text-black"
+      href="/classes/#pricing-heading"
+    >
+      Back to dance passes
+    </a>
+  </section>
+</SiteLayout>

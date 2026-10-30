@@ -1,0 +1,35 @@
+---
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const classes = [
+  { value: "beginner", name: "Beginner", time: "6:00-7:00 PM" },
+  { value: "choreography", name: "Intermediate-Advanced Choreography", time: "7:00-8:00 PM" },
+];
+---
+
+<fieldset>
+  <legend class="text-sm font-semibold">Select your class</legend>
+  <input type="hidden" id={`${id}-class`} name="class" data-class value="" />
+  <div class="mt-2 grid grid-cols-2 gap-3">
+    {classes.map((option) => (
+      <button
+        type="button"
+        data-class-option
+        value={option.value}
+        aria-pressed="false"
+        class="group flex min-w-0 flex-col items-start rounded-xl border border-neutral-600 bg-black p-3 text-left text-white transition hover:border-neutral-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white aria-pressed:border-white aria-pressed:bg-white aria-pressed:text-black"
+      >
+        <span
+          class="mb-3 flex size-4 items-center justify-center rounded-full border border-current"
+          aria-hidden="true"
+        >
+          <span class="size-2 rounded-full bg-current opacity-0 group-aria-pressed:opacity-100"></span>
+        </span>
+        <span class="text-sm font-semibold leading-5">{option.name}</span>
+        <span class="mt-auto pt-2 text-xs opacity-75">{option.time}</span>
+      </button>
+    ))}
+  </div>
+</fieldset>

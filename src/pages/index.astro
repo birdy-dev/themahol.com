@@ -1,0 +1,62 @@
+---
+import SiteLayout from "../layouts/site_layout.astro";
+import HeroCarousel from "../components/hero_carousel.astro";
+export const prerender = true;
+---
+
+<SiteLayout
+  title="Mahol School of Arts"
+  description="Learn, express yourself, and connect through dance and music at Mahol School of Arts in Edmonton."
+>
+  <div class="relative w-full h-[560px] md:h-[800px]">
+    <section class="flex justify-center items-center size-full">
+      <div class="text-center z-10 p-8 select-none">
+        <h1 class="text-7xl md:text-[8rem] font-bold uppercase font-title">Mahol</h1>
+        <p class="text-2xl">school of arts</p>
+      </div>
+    </section>
+    <div class="absolute size-full left-0 top-0">
+      <HeroCarousel />
+    </div>
+  </div>
+
+  <section class="py-40 max-w-screen-lg px-8 mx-auto space-y-12">
+    <h2 class="text-4xl md:text-7xl font-bold uppercase font-title text-center">Mission</h2>
+    <p class="text-xl">
+      To create welcoming spaces where people can learn, express themselves, and connect through
+      dance and music.
+    </p>
+  </section>
+
+  <div class="bg-[#191c21]">
+    <section class="py-24 max-w-screen-lg px-8 mx-auto" aria-label="Explore our sessions">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {[
+          {
+            title: "Dance Sessions",
+            description: "Learn, move, and grow with Mahol.",
+            button: "Explore Dance",
+            href: "/classes/",
+          },
+          {
+            title: "Music Sessions",
+            description: "Learn, play, and experience live music.",
+            button: "Explore Music",
+            href: "/music/",
+          },
+        ].map((session) => (
+          <a
+            href={session.href}
+            class="group flex flex-col items-start rounded-xl border border-neutral-600 bg-black p-8 md:p-10 transition hover:border-white hover:bg-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          >
+            <h2 class="text-4xl font-bold uppercase font-title">{session.title}</h2>
+            <p class="mt-6 text-lg leading-8">{session.description}</p>
+            <span class="mt-10 inline-flex rounded-lg bg-white px-6 py-3 font-semibold text-black group-hover:bg-neutral-200">
+              {session.button}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</SiteLayout>

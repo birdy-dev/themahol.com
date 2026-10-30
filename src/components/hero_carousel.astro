@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+const images = import.meta.glob<{ default: ImageMetadata }>("../assets/hero_carousel/*.jpg", {
+  eager: true,
+});
+const photos = Object.entries(images)
+  .sort(([a], [b]) => Number(a.match(/(\d+)\.jpg$/)?.[1]) - Number(b.match(/(\d+)\.jpg$/)?.[1]))
+  .map(([, image]) => image.default);
+const midpoint = Math.ceil(photos.length / 2);
+const rows = [photos.slice(0, midpoint), photos.slice(midpoint)];
+---
+
+<div class="absolute grid grid-rows-2 grid-flow-row-dense w-full h-full gap-4 p-4 overflow-clip">
+  {rows.map((row, rowIndex) => (
+    <div class:list={["flex gap-4", { "-translate-x-40": rowIndex === 1 }]}>
+      {[false, true].map((duplicate) => (
+        <div
+          class="flex shrink-0 gap-4 animate-marquee motion-reduce:animate-none h-full overflow-hidden"
+          aria-hidden={duplicate}
+        >
+          {row.map((image, index) => (
+            <div class="flex shrink-0 items-center justify-center grayscale-[50%] overflow-clip w-60 md:w-96 rounded-lg">
+              <Image
+                class="size-full object-cover object-center select-none"
+                src={image}
+                width={480}
+                height={480}
+                widths={[240, 480, 768, 1152]}
+                sizes="(min-width: 768px) 384px, 240px"
+                fit="cover"
+                format="webp"
+                quality={82}
+                alt=""
+                draggable={false}
+                loading={!duplicate && index < 2 ? "eager" : "lazy"}
+              />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  ))}
+</div>

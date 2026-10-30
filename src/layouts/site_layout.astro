@@ -1,0 +1,37 @@
+---
+import "../styles.css";
+import SiteNav from "../components/site_nav.astro";
+import SiteFooter from "../components/site_footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = "Learn, express yourself, and connect through dance and music at Mahol School of Arts in Edmonton.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" href="/images/site_logo.svg" />
+  </head>
+  <body class="min-h-screen bg-black text-white">
+    <header class="bg-white text-black sticky top-0 z-50">
+      <SiteNav />
+    </header>
+    <main class="h-full">
+      <slot />
+    </main>
+    <footer class="bg-[#191c21]">
+      <SiteFooter />
+      <div class="text-center py-8 bg-black rounded-t-md">© 2026 Mahol Arts &amp; Events</div>
+    </footer>
+  </body>
+</html>

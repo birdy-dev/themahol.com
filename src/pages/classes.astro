@@ -1,0 +1,243 @@
+---
+import SiteLayout from "../layouts/site_layout.astro";
+import ClassSelector from "../components/class_selector.astro";
+import { passes } from "../data/dance_passes";
+export const prerender = true;
+---
+
+<SiteLayout
+  title="Dance Sessions | Mahol School of Arts"
+  description="Explore Tuesday Hip Hop classes at New Roots. Choose Beginner or Intermediate-Advanced Choreography, with drop-in, monthly, and three-month passes."
+>
+  <section class="px-5 py-10 sm:px-6 sm:py-14 lg:py-20">
+    <div class="mx-auto max-w-4xl">
+      <div class="grid gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10">
+        <div class="relative aspect-[45/64] self-start overflow-hidden rounded-3xl bg-black">
+          <video
+            id="dance-reel"
+            class="size-full object-cover object-center"
+            width="720"
+            height="1280"
+            poster="/videos/dance_class_poster.webp"
+            autoplay
+            muted
+            loop
+            playsinline
+            disablepictureinpicture
+            disableRemotePlayback
+            preload="metadata"
+            aria-label="Mahol dance class reel"
+          >
+            <source src="/videos/dance_class.mp4" type="video/mp4" />
+            <a href="/videos/dance_class.mp4">Watch the Mahol dance class reel</a>
+          </video>
+          <button
+            id="dance-reel-sound"
+            type="button"
+            aria-controls="dance-reel"
+            class="absolute bottom-4 right-4 min-h-11 rounded-full bg-black/75 px-4 py-2 text-sm font-medium text-white hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            Unmute
+          </button>
+        </div>
+        <div class="flex flex-col justify-center md:py-6">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-400">
+            Hip Hop · Tuesdays
+          </p>
+          <h1 class="mt-3 font-title text-5xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-6xl">
+            Dance Sessions
+          </h1>
+          <p class="mt-5 max-w-lg text-lg font-medium leading-8">
+            Learn, move, and grow with Mahol.
+          </p>
+          <p class="mt-3 max-w-md leading-7 text-neutral-400">
+            Find your rhythm with Tuesday Hip Hop classes. Choose the class that fits you, or join
+            us for both.
+          </p>
+          <dl class="mt-8 grid gap-px overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-800 sm:grid-cols-2">
+            <div class="bg-neutral-950 p-5">
+              <dt class="font-semibold">Beginner</dt>
+              <dd class="mt-2 text-neutral-300">6:00-7:00 PM</dd>
+              <dd class="mt-1 text-sm text-neutral-400">60-minute class</dd>
+            </div>
+            <div class="bg-neutral-950 p-5">
+              <dt class="font-semibold">Intermediate-Advanced Choreography</dt>
+              <dd class="mt-2 text-neutral-300">7:00-8:00 PM</dd>
+              <dd class="mt-1 text-sm text-neutral-400">60-minute class</dd>
+            </div>
+          </dl>
+          <a
+            class="relative mt-5 flex items-start gap-3 rounded-xl border border-neutral-800 bg-neutral-950 p-5 transition hover:border-neutral-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            href="https://www.google.com/maps/search/?api=1&amp;query=New+Roots+Breaking+Studios%2C+9937+60+Avenue+NW%2C+Edmonton%2C+AB+T6E+0C7"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="New Roots Breaking Studios, 9937 60 Avenue NW, Edmonton, AB T6E 0C7 (opens in Google Maps in a new tab)"
+          >
+            <svg
+              class="size-5 shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span class="pr-7">
+              <span class="block text-sm font-semibold">New Roots Breaking Studios</span>
+              <span class="mt-2 block text-sm leading-6 text-neutral-400">
+                9937 60 Avenue NW
+                <br />
+                Edmonton, AB T6E 0C7
+              </span>
+            </span>
+            <svg
+              class="absolute right-5 top-5 size-4 text-neutral-400"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M15 3h6v6M10 14 21 3M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <section class="py-16 sm:py-20" aria-labelledby="pricing-heading">
+        <h2
+          id="pricing-heading"
+          class="scroll-mt-28 font-title text-4xl font-semibold uppercase sm:text-5xl"
+        >
+          Dance class passes
+        </h2>
+        <p
+          id="payment-status"
+          class="mt-6 rounded-xl border border-neutral-700 bg-neutral-950 p-4 text-sm leading-6 text-neutral-300"
+        >
+          To enquire about registration,{" "}
+          <a class="underline underline-offset-4 text-white" href="mailto:info@themahol.com">
+            email info@themahol.com
+          </a>
+          .
+        </p>
+        <noscript>
+          <p class="mt-4 text-neutral-300">
+            Enable JavaScript to select your class, or email us for help choosing a pass.
+          </p>
+        </noscript>
+        <div class="mt-8 grid gap-5 md:grid-cols-2">
+          {Object.entries(passes).map(([id, pass]) => {
+            const billing =
+              pass.months === 0 ? "one-time" : pass.months === 1 ? "per month" : "every 3 months";
+            const access = pass.both
+              ? "Both Tuesday classes, 6:00-8:00 PM."
+              : "One selected Tuesday class each week.";
+            const description =
+              pass.months === 0
+                ? "One 60-minute class. Choose your class below."
+                : `${access} Starts when payment succeeds and renews ${pass.months === 1 ? "monthly" : "every three months"}.`;
+            return (
+              <article
+                data-pass={id}
+                class="flex min-w-0 flex-col rounded-2xl border border-neutral-800 bg-neutral-950 p-6 sm:p-8"
+                aria-labelledby={`${id}-heading`}
+              >
+                <h3 id={`${id}-heading`} class="font-title text-2xl font-semibold uppercase">
+                  {pass.name}
+                </h3>
+                <p class="mt-4 text-4xl font-semibold">
+                  ${pass.amount / 100}
+                  <span class="ml-2 text-sm font-normal text-neutral-400">{billing}</span>
+                </p>
+                <p class="mt-4 text-sm leading-7 text-neutral-300">{description}</p>
+                <div class="mt-6">
+                  {pass.both ? (
+                    <p class="text-sm text-neutral-300">
+                      Includes Beginner and Intermediate-Advanced Choreography.
+                    </p>
+                  ) : (
+                    <ClassSelector id={id} />
+                  )}
+                </div>
+                <div class="mt-auto pt-6">
+                  <button
+                    type="button"
+                    data-buy
+                    disabled
+                    class="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {pass.months ? "Subscribe" : "Buy Pass"}
+                  </button>
+                  <p data-checkout-error role="alert" hidden class="mt-3 text-sm text-red-300"></p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section class="border-t border-neutral-800 py-12" aria-labelledby="location-heading">
+        <div class="grid gap-6 sm:grid-cols-2">
+          <h2
+            id="location-heading"
+            class="scroll-mt-28 font-title text-3xl font-semibold uppercase sm:text-4xl"
+          >
+            Where we dance
+          </h2>
+          <div>
+            <p class="text-xl font-semibold">New Roots Breaking Studios</p>
+            <address class="mt-2 not-italic leading-7 text-neutral-400">
+              9937 60 Avenue NW
+              <br />
+              Edmonton, AB T6E 0C7
+            </address>
+            <p class="mt-4 text-sm leading-6 text-neutral-300">
+              Tuesdays · Beginner 6:00-7:00 PM · Intermediate-Advanced Choreography 7:00-8:00 PM
+            </p>
+          </div>
+        </div>
+        <div class="relative mt-8 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950">
+          <iframe
+            class="pointer-events-none h-64 w-full border-0 sm:h-72"
+            tabindex="-1"
+            aria-hidden="true"
+            style="color-scheme: normal; filter: grayscale(1) invert(0.92) hue-rotate(180deg) contrast(0.88);"
+            src="https://www.google.com/maps?q=New+Roots+Breaking+Studios%2C+9937+60+Avenue+NW%2C+Edmonton%2C+AB+T6E+0C7&amp;output=embed&amp;iwloc=near&amp;z=16"
+            title="Map showing New Roots Breaking Studios at 9937 60 Avenue NW, Edmonton"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <a
+            class="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white"
+            href="https://www.google.com/maps/search/?api=1&amp;query=New+Roots+Breaking+Studios%2C+9937+60+Avenue+NW%2C+Edmonton%2C+AB+T6E+0C7"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open New Roots Breaking Studios in Google Maps (opens in a new tab)"
+          ></a>
+        </div>
+      </section>
+    </div>
+  </section>
+  <script>
+    import "../scripts/dance_passes.ts";
+
+    const reel = document.querySelector<HTMLVideoElement>("#dance-reel");
+    const soundButton = document.querySelector<HTMLButtonElement>("#dance-reel-sound");
+
+    if (reel && soundButton) {
+      soundButton.addEventListener("click", () => {
+        reel.muted = !reel.muted;
+      });
+      reel.addEventListener("volumechange", () => {
+        soundButton.textContent = reel.muted ? "Unmute" : "Mute";
+      });
+    }
+  </script>
+</SiteLayout>

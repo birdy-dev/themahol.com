@@ -1,0 +1,28 @@
+---
+import SiteLayout from "../layouts/site_layout.astro";
+export const prerender = true;
+---
+
+<SiteLayout
+  title="Contact Us | Mahol School of Arts"
+  description="Get in touch with Mahol about dance and music in Edmonton."
+>
+  <section class="max-w-screen-lg mx-auto px-8 py-24">
+    <h1 class="font-title uppercase text-5xl md:text-7xl font-semibold">Contact Us</h1>
+    <p class="mt-8 text-xl leading-8">Get in touch about dance or music sessions.</p>
+    <div class="mt-8 space-y-4 text-lg">
+      <p>
+        Email:{" "}
+        <a class="underline underline-offset-4" href="mailto:info@themahol.com">
+          info@themahol.com
+        </a>
+      </p>
+      <p>
+        Phone:{" "}
+        <a class="underline underline-offset-4" href="tel:+13062090354">
+          306-209-0354
+        </a>
+      </p>
+    </div>
+  </section>
+</SiteLayout>

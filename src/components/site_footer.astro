@@ -1,0 +1,47 @@
+---
+import Phone from "./icons/phone.astro";
+import Email from "./icons/email.astro";
+import Facebook from "./icons/facebook.astro";
+import Instagram from "./icons/instagram.astro";
+import Youtube from "./icons/youtube.astro";
+---
+
+<div class="rounded-b-xl">
+  <div class="space-y-4 py-16 w-fit mx-auto">
+    <div class="flex gap-4">
+      <Phone class="size-6" /> +1 306 209 0354
+    </div>
+    <div class="flex gap-4">
+      <Email class="size-6" /> info@themahol.com
+    </div>
+  </div>
+
+  <hr class="border-t-[1px] border-y-neutral-700 mx-auto max-w-xs" />
+
+  <div class="flex w-fit mx-auto py-16">
+    <div class="flex items-center justify-center size-16">
+      <a href="https://www.facebook.com/profile.php?id=100089024426349">
+        <span class="sr-only">Facebook page</span>
+        <div class="hover:scale-110 transition">
+          <Facebook class="size-8" />
+        </div>
+      </a>
+    </div>
+    <div class="flex items-center justify-center size-16">
+      <a href="https://www.instagram.com/maholized">
+        <span class="sr-only">Instagram profile</span>
+        <div class="hover:scale-110 transition">
+          <Instagram class="size-8" />
+        </div>
+      </a>
+    </div>
+    <div class="flex items-center justify-center size-16">
+      <a href="https://www.youtube.com/channel/UC2dsmCenUxIg0N8Sgh0ws5Q">
+        <span class="sr-only">YouTube channel</span>
+        <div class="hover:scale-110 transition">
+          <Youtube class="size-8" />
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
