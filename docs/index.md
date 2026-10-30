@@ -4,6 +4,7 @@ Start with [local setup](../README.md#run-locally) to install pnpm, clone the re
 and run the app. Use the guides below when planning changes or investigating problems.
 
 - [Coding style](coding_style.md): file naming, comment policy, portable automation, and required checks. Follow this before changing files.
+- [Developer onboarding](onboarding.md): track your first contribution from local setup through preview, pull request, and production release.
 - [Pull request template](../.github/pull_request_template.md): semantic titles, change summaries, and validation.
 - [Architecture](architecture.md): app structure, technology, Stripe checkout, Cloudflare deployment, and domains.
 - [Debugging](debug.md): local reproduction, Stripe test payments, Cloudflare logs, and deployment failures.
