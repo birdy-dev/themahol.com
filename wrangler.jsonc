@@ -3,6 +3,7 @@
   "name": "mahol-website",
   "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2026-10-29",
+  "preview_urls": true,
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
