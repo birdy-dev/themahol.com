@@ -14,24 +14,24 @@
     "fmt:check": "oxfmt --check ."
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^13.0.0",
+    "@astrojs/cloudflare": "^14.4.4",
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource-variable/oswald": "^5.3.0",
-    "@tailwindcss/vite": "^4.3.3",
-    "astro": "^6.0.0",
+    "@tailwindcss/vite": "^4.3.4",
+    "astro": "^7.4.5",
     "sharp": "^0.35.5",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.4"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
     "@astrojs/compiler-rs": "^0.5.2",
-    "@stripe/cli": "^1.55.3",
+    "@stripe/cli": "^1.55.6",
     "@types/node": "^26.6.6",
     "oxfmt": "^0.75.0",
     "oxlint": "^1.90.0",
     "typescript": "^6.0.3",
-    "vite": "^7.3.7",
-    "wrangler": "^4.155.0"
+    "vite": "^8.3.5",
+    "wrangler": "^4.156.2"
   },
   "devEngines": {
     "runtime": {

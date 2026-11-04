@@ -1,6 +1,6 @@
 # Mahol Website
 
-Astro v6 + TypeScript v6 + Tailwind CSS, using pnpm and deployed to Cloudflare Workers.
+Astro v7 + TypeScript v6 + Tailwind CSS, using pnpm and deployed to Cloudflare Workers.
 `pnpm check` runs formatting checks, lint, standard `astro check`, and all tests.
 The public pages are pre-rendered. Checkout creation and payment confirmation run
 on the Cloudflare Worker and call Stripe directly.

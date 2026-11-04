@@ -25,9 +25,9 @@ Never use em dashes or en dashes in website copy. Use a standard hyphen (-) inst
 
 ## Toolchain
 
-- Stay on Astro v6 with a TypeScript version supported by standard `astro check`.
-- Avoid custom checker workspaces. Revisit v7 upgrades only when Astro's standard
-  tooling supports them and the user requests the upgrade.
+- Stay on Astro v7 with TypeScript v6, supported by standard `astro check`.
+- Avoid custom checker workspaces. Revisit TypeScript v7 when Astro's standard
+  checker supports it.
 
 ## Project documentation
 
