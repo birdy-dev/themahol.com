@@ -43,15 +43,16 @@ Top-level `vars` in `wrangler.jsonc` define the five live Price IDs and `STRIPE_
 
 ## Technology
 
-| Tool                  | What it does here                                                                                                                                                                |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| pnpm                  | Installs packages, runs project commands, and manages the pinned local Node.js version. `pnpm-lock.yaml` records the resolved dependencies.                                      |
-| Node.js               | Runs local tools and tests. Deployed server code runs in Cloudflare's Workers runtime.                                                                                           |
-| Astro + TypeScript    | Builds pages and server routes. TypeScript checks data shapes before deployment.                                                                                                 |
-| Tailwind CSS          | Styles pages with utility classes such as `p-5`; prefer its default tokens.                                                                                                      |
-| Git + GitHub          | Git records changes as commits and separates work into branches. GitHub hosts the repository for sharing and review. A push uploads commits; it does not merge them into `main`. |
-| Wrangler + Stripe CLI | Project-local command-line tools for Cloudflare deployment and Stripe inspection. Use them through `pnpm exec`. Their logins are separate from app API keys.                     |
-| Oxlint + Oxfmt        | Catch code issues and format files. Run `pnpm check` before sharing changes.                                                                                                     |
+| Tool                  | What it does here                                                                                                                                                                                                           |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| pnpm                  | Installs packages, runs project commands, and manages the pinned local Node.js version. `pnpm-lock.yaml` records the resolved dependencies.                                                                                 |
+| Node.js               | Runs local tools and tests. Deployed server code runs in Cloudflare's Workers runtime.                                                                                                                                      |
+| Astro + TypeScript    | Builds pages and server routes. TypeScript checks data shapes before deployment.                                                                                                                                            |
+| Tailwind CSS          | Styles pages with utility classes such as `p-5`; prefer its default tokens.                                                                                                                                                 |
+| Astro Fonts API       | Downloads Inter and Oswald from Google during development/build and serves them from the site. Font families are configured in `astro.config.mjs`, loaded in the shared layout, and mapped to Tailwind in `src/styles.css`. |
+| Git + GitHub          | Git records changes as commits and separates work into branches. GitHub hosts the repository for sharing and review. A push uploads commits; it does not merge them into `main`.                                            |
+| Wrangler + Stripe CLI | Project-local command-line tools for Cloudflare deployment and Stripe inspection. Use them through `pnpm exec`. Their logins are separate from app API keys.                                                                |
+| Oxlint + Oxfmt        | Catch code issues and format files. Run `pnpm check` before sharing changes.                                                                                                                                                |
 
 ## Where to start
 
