@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import bird from "../assets/bird.png";
 import SiteLayout from "../layouts/site_layout.astro";
 import HeroCarousel from "../components/hero_carousel.astro";
 export const prerender = true;
@@ -26,6 +28,16 @@ export const prerender = true;
       To create welcoming spaces where people can learn, express themselves, and connect through
       dance and music.
     </p>
+    <Image
+      src={bird}
+      alt="A songbird perched on a branch in warm natural light"
+      class="w-full rounded-xl"
+      widths={[480, 768, 1024, 1536]}
+      sizes="(min-width: 1024px) 960px, calc(100vw - 4rem)"
+      format="webp"
+      quality={82}
+      loading="lazy"
+    />
   </section>
 
   <div class="bg-[#191c21]">
