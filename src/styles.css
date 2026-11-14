@@ -1,10 +1,11 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
-@import "@fontsource-variable/oswald";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-title: var(--font-oswald);
+}
 
 @theme {
-  --font-sans: "Inter Variable", sans-serif;
-  --font-title: "Oswald Variable", sans-serif;
   --color-white: #fdfdfd;
   --color-black: #090909;
   --animate-marquee: marquee 100s linear infinite;
