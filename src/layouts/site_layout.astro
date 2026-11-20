@@ -12,6 +12,8 @@ const {
   title,
   description = "Learn, express yourself, and connect through dance and music at Mahol School of Arts in Edmonton.",
 } = Astro.props;
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL("/images/mahol_social_preview.jpg", Astro.site);
 ---
 
 <!doctype html>
@@ -23,6 +25,18 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <link rel="canonical" href={pageUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mahol School of Arts" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Mahol School of Arts" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
     <link rel="icon" href="/images/site_logo.svg" />
   </head>
   <body class="min-h-screen bg-black text-white">
